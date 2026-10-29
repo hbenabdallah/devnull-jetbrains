@@ -1,0 +1,40 @@
+<idea-plugin>
+    <id>io.github.hbenabdallah.devnull</id>
+    <name>/dev/null</name>
+    <vendor url="https://github.com/hbenabdallah/devnull-jetbrains">Houssem Eddine BENABDALLAH</vendor>
+    <description><![CDATA[
+        Commit code from your IDE to <a href="https://dev-null.sh">/dev/null</a>, the social network for developers.
+        <ul>
+            <li>Select lines and choose <b>Commit Selection to /dev/null</b> from the editor menu: the code goes in a highlighted block titled with its path and lines, with a link to them on GitHub once they are pushed.</li>
+            <li><b>Tools → /dev/null → Commit…</b> for a quick commit.</li>
+        </ul>
+        Sign-in approves a key made by the plugin as a device in your browser: no password or token.
+        A community plugin, not made by the /dev/null team.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>Git4Idea</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="io.github.hbenabdallah.devnull.DevNullSettings"/>
+        <applicationConfigurable parentId="tools" instance="io.github.hbenabdallah.devnull.DevNullConfigurable"
+                                 id="io.github.hbenabdallah.devnull.settings" displayName="/dev/null"/>
+        <notificationGroup id="/dev/null" displayType="BALLOON"/>
+    </extensions>
+
+    <actions>
+        <action id="DevNull.CommitSelection" class="io.github.hbenabdallah.devnull.CommitSelectionAction"
+                text="Commit Selection to /dev/null" description="Commit the selected code to /dev/null">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+        <group id="DevNull.Menu" text="/dev/null" popup="true">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <action id="DevNull.Commit" class="io.github.hbenabdallah.devnull.CommitAction"
+                    text="Commit…" description="Write a commit to /dev/null"/>
+            <action id="DevNull.SignIn" class="io.github.hbenabdallah.devnull.SignInAction"
+                    text="Sign In" description="Approve this IDE as a /dev/null device"/>
+            <action id="DevNull.SignOut" class="io.github.hbenabdallah.devnull.SignOutAction"
+                    text="Sign Out" description="Forget this IDE's /dev/null key"/>
+        </group>
+    </actions>
+</idea-plugin>
