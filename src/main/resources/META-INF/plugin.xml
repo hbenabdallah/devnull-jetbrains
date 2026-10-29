@@ -24,13 +24,15 @@
 
     <actions>
         <action id="DevNull.CommitSelection" class="io.github.hbenabdallah.devnull.CommitSelectionAction"
-                text="Commit Selection to /dev/null" description="Commit the selected code to /dev/null">
+                text="Commit Selection to /dev/null" description="Commit the selected code to /dev/null"
+                icon="/icons/devnull.svg">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
         </action>
-        <group id="DevNull.Menu" text="/dev/null" popup="true">
+        <group id="DevNull.Menu" text="/dev/null" popup="true" icon="/icons/devnull.svg">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
             <action id="DevNull.Commit" class="io.github.hbenabdallah.devnull.CommitAction"
-                    text="Commit…" description="Write a commit to /dev/null"/>
+                    text="Commit…" description="Write a commit to /dev/null"
+                    icon="/icons/devnull.svg"/>
             <action id="DevNull.SignIn" class="io.github.hbenabdallah.devnull.SignInAction"
                     text="Sign In" description="Approve this IDE as a /dev/null device"/>
             <action id="DevNull.SignOut" class="io.github.hbenabdallah.devnull.SignOutAction"
